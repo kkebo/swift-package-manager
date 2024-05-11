@@ -98,7 +98,6 @@ let package = Package(
         ),
         .library(
             name: "PackageDescription",
-            type: .dynamic,
             targets: ["PackageDescription", "CompilerPluginSupport"]
         ),
         .library(
@@ -710,7 +709,7 @@ if ProcessInfo.processInfo.environment["SWIFTCI_DISABLE_SDK_DEPENDENT_TESTS"] ==
 // this right now.
 
 /// When not using local dependencies, the branch to use for llbuild and TSC repositories.
-let relatedDependenciesBranch = "release/5.10"
+let relatedDependenciesBranch = "origin/release/5.10"
 
 if ProcessInfo.processInfo.environment["SWIFTPM_LLBUILD_FWK"] == nil {
     if ProcessInfo.processInfo.environment["SWIFTCI_USE_LOCAL_DEPS"] == nil {
@@ -736,7 +735,7 @@ if ProcessInfo.processInfo.environment["SWIFTCI_USE_LOCAL_DEPS"] == nil {
         // used by 'swift-driver' and 'sourcekit-lsp'. Please coordinate
         // dependency version changes here with those projects.
         .package(url: "https://github.com/apple/swift-argument-parser.git", .upToNextMinor(from: "1.2.2")),
-        .package(url: "https://github.com/apple/swift-driver.git", branch: relatedDependenciesBranch),
+        .package(url: "https://github.com/kkebo/swift-driver.git", branch: "origin/playground-release/5.10"),
         .package(url: "https://github.com/apple/swift-crypto.git", .upToNextMinor(from: "3.0.0")),
         .package(url: "https://github.com/apple/swift-system.git", .upToNextMinor(from: "1.1.1")),
         .package(url: "https://github.com/apple/swift-collections.git", .upToNextMinor(from: "1.0.1")),
